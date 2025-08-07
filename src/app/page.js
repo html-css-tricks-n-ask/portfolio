@@ -1,5 +1,6 @@
 'use client'
 
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import profile from './lib/profileData'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
@@ -13,24 +14,66 @@ const iconMap = {
 }
 
 export default function Home() {
+  const fullName = profile.name
+  const [text, setText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [loopIndex, setLoopIndex] = useState(0)
+  const [speed, setSpeed] = useState(150)
+
+  useEffect(() => {
+    const handleTyping = () => {
+      const current = fullName
+
+      if (isDeleting) {
+        setText(current.substring(0, text.length - 1))
+        setSpeed(100)
+      } else {
+        setText(current.substring(0, text.length + 1))
+        setSpeed(150)
+      }
+
+      if (!isDeleting && text === current) {
+        setTimeout(() => setIsDeleting(true), 1000)
+      } else if (isDeleting && text === '') {
+        setIsDeleting(false)
+        setLoopIndex(loopIndex + 1)
+      }
+    }
+
+    const typingTimer = setTimeout(handleTyping, speed)
+    return () => clearTimeout(typingTimer)
+  }, [text, isDeleting])
+
   return (
     <section className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-3xl text-center">
-
-        {/* Heading */}
+        {/* Loop Typing with Cursor */}
         <motion.h1
           className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
         >
-          Hey, I’m {' '}
+          Hey, I’m{' '}
           <motion.span
-            className="text-orange-500 inline-block"
-            animate={{ scale: [1, 1.1, 1], textShadow: '0 0 10px #f97316' }}
-            transition={{ repeat: Infinity, duration: 2 }}
+            className="text-orange-500 font-mono inline-block"
+            animate={{
+              textShadow: [
+                '0 0 0px #f97316',
+                '0 0 8px #f97316',
+                '0 0 0px #f97316',
+              ],
+            }}
+            transition={{ repeat: Infinity, duration: 3 }}
           >
-            {' ' + profile.name}
+            {text}
+            <motion.span
+              className="inline-block ml-1"
+              animate={{ opacity: [0, 1, 0] }}
+              transition={{ repeat: Infinity, duration: 1 }}
+            >
+              |
+            </motion.span>
           </motion.span>
         </motion.h1>
 
@@ -101,7 +144,6 @@ export default function Home() {
             )
           })}
         </motion.div>
-
       </div>
     </section>
   )

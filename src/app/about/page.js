@@ -1,5 +1,71 @@
 'use client'
 import { aboutMe } from '../lib/aboutData'
+import { motion } from 'framer-motion'
+
+
+
+import {
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiRedux,
+  SiTypescript,
+  SiAntdesign,
+  SiMaterialdesign,  // ✅ Fixed here
+  SiNpm,
+  SiGithub,
+  SiPostman,
+  SiGit,
+  SiJirasoftware,
+  SiSentry
+} from 'react-icons/si'
+import { FaDatabase, FaCode } from 'react-icons/fa'
+
+const skillIcons = {
+  HTML: SiHtml5,
+  CSS: SiCss3,
+  JavaScript: SiJavascript,
+  'React.js': SiReact,
+  'Next.js': SiNextdotjs,
+  JSX: SiReact,
+  'React SDK': SiReact,
+  'Tailwind CSS': SiTailwindcss,
+  'TypeScript': SiTypescript,
+  Redux: SiRedux,
+  'Context API': SiReact,
+  'Ant Design (ANTD)': SiAntdesign,
+  'Material UI': SiMaterialdesign,
+  Axios: SiReact,
+  'TanStack Query': FaDatabase,
+  NPM: SiNpm,
+  Git: SiGit,
+  GitHub: SiGithub,
+  Postman: SiPostman,
+  Compass: FaCode,
+  Jira: SiJirasoftware,              // ✅ Added Jira
+  'Agile Methodology': SiJirasoftware,
+  'Daily Scrum': SiJirasoftware,
+  Sentry: SiSentry,
+}
+
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+}
+
 
 export default function AboutPage() {
   return (
@@ -30,21 +96,27 @@ export default function AboutPage() {
           </div>
 
           {/* Skills */}
-          <div>
-            <h3 className="text-2xl font-semibold text-orange-500 mb-4">
-              My Skills
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              {aboutMe.skills.map((skill, index) => (
-                <span
-                  key={index}
-                  className="bg-gray-100 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm hover:bg-orange-100 hover:text-orange-600 transition"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
+         <motion.div
+  variants={containerVariants}
+  initial="hidden"
+  animate="visible"
+  className="flex flex-wrap gap-4"
+>
+  {aboutMe.skills.map((skill, index) => {
+    const Icon = skillIcons[skill]
+    return (
+      <motion.div
+        key={index}
+        variants={itemVariants}
+        whileHover={{ scale: 1.1, color: '#f97316' }}
+        className="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 shadow-sm"
+      >
+        {Icon && <Icon className="text-xl" />}
+        <span>{skill}</span>
+      </motion.div>
+    )
+  })}
+</motion.div>
         </div>
       </div>
     </section>

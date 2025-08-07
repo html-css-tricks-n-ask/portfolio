@@ -4,12 +4,11 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FiMenu, FiX } from 'react-icons/fi' // react-icons
-// import profileImg from "../../../public/profile.png"
 
 const navLinks = [
   { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'About Me', href: '/about' },
+  { name: 'Contact Me', href: '/contact' },
 ]
 
 export default function Navbar() {

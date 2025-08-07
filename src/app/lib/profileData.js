@@ -3,7 +3,7 @@ const profileData = {
   title: 'Frontend Developer | UI/UX Enthusiast',
   description:
     'I build modern, responsive web apps with React, Next.js, and clean UI. Currently exploring advanced frontend architectures and performance.',
-  ctaText: 'About',
+  ctaText: 'About Me',
   ctaLink: '/about',
   socials: [
     {
