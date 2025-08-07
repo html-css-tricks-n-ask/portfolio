@@ -20,7 +20,7 @@ const ContactForm = () => {
       {/* Form Container */}
       <div className="w-full max-w-xl bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-gray-100">
         <form
-          action="https://formsubmit.co/seebharat20@gmail.com"
+  action="https://formsubmit.co/f51d65df0956bbc984477697dddf4420"
           method="POST"
           className="space-y-6"
         >
