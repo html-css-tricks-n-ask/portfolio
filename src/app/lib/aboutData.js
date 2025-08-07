@@ -1,0 +1,37 @@
+export const aboutMe = {
+  heading: "ABOUT ME",
+  description:
+    "Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology",
+  paragraphs: [
+    `I'm a Frontend Developer with over 3.6 years of experience in building high-performance and user-friendly web applications.`,
+    `Specializing in React.js, JavaScript, and UI libraries like Ant Design and Material UI. Proven experience in fintech and logistics startups building admin panels and dashboards from scratch.`,
+    `Focused on clean UI, reusable components, and scalable code that leads to the success of the overall product.`,
+    `Feel free to connect or follow me on LinkedIn and Instagram.`,
+    `I'm open to Job opportunities where I can contribute, learn and grow. If you have a good opportunity that matches my skills and experience then don’t hesitate to contact me.`,
+  ],
+  skills: [
+  'HTML',
+  'CSS',
+  'JavaScript',
+  'React.js',
+  'Next.js',
+  'JSX',
+  'React SDK',
+  'Ant Design (ANTD)',
+  'Material UI',
+  'Tailwind CSS',
+  'TypeScript',
+  'Redux',
+  'Context API',
+  'Axios',
+  'TanStack Query',
+  'NPM',
+  'Git',
+  'GitHub',
+  'Postman',
+  'Compass',
+   'Agile Methodology',
+  'Daily Scrum',
+  'Sentry'
+  ],
+}
