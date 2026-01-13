@@ -7,6 +7,10 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import Link from 'next/link'
 
+
+import { useDispatch, useSelector } from "react-redux";
+
+
 const iconMap = {
   github: FaGithub,
   linkedin: FaLinkedin,
@@ -19,6 +23,9 @@ export default function Home() {
   const [isDeleting, setIsDeleting] = useState(false)
   const [loopIndex, setLoopIndex] = useState(0)
   const [speed, setSpeed] = useState(150)
+
+
+const mode = useSelector((state) => state.theme.mode);
 
   useEffect(() => {
     const handleTyping = () => {
@@ -45,11 +52,17 @@ export default function Home() {
   }, [text, isDeleting])
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-b from-white to-gray-50">
+    <section   className={`min-h-screen flex items-center justify-center px-6
+      ${
+        mode === "dark"
+          ? "bg-gradient-to-b from-black to-gray-900 text-white"
+          : "bg-gradient-to-b from-white to-gray-50 text-black"
+      }`}>
       <div className="max-w-3xl text-center">
         {/* Loop Typing with Cursor */}
         <motion.h1
-          className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight"
+        className={`text-4xl md:text-5xl font-extrabold mb-4 leading-tight
+  ${mode === "dark" ? "text-white" : "text-gray-900"}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -79,7 +92,8 @@ export default function Home() {
 
         {/* Subheading */}
         <motion.h2
-          className="text-xl md:text-2xl text-gray-700 mb-6 font-medium"
+          className={`text-xl md:text-2xl mb-6 font-medium
+  ${mode === "dark" ? "text-gray-300" : "text-gray-700"}`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
@@ -89,7 +103,8 @@ export default function Home() {
 
         {/* Description */}
         <motion.p
-          className="text-gray-600 mb-8 leading-relaxed"
+           className={`text-xl md:text-2xl mb-6 font-medium
+  ${mode === "dark" ? "text-gray-300" : "text-gray-700"}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.6 }}

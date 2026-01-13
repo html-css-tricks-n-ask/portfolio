@@ -1,26 +1,41 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Base variables (fallback) */
+
+
+/* Redux-controlled themes */
+.light {
+  --bg: #ffffff;
+  --text: #171717;
+  --card: #f5f5f7;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --bg: #0f0f12;
+  --text: #ededed;
+  --card: #1a1a1f;
 }
 
+/* REMOVE system theme override */
+/* ❌ Do NOT use prefers-color-scheme */
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
+*/
 
+/* Global application colors */
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: var(--bg);
+  color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Example card */
+.card {
+  background-color: var(--card);
 }
