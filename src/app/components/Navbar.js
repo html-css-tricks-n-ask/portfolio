@@ -27,9 +27,16 @@ const mode = useSelector((state) => state.theme.mode);
   console.log("Current mode:", mode);
 
   return (
-    <nav  className={`w-full fixed top-0 z-50 backdrop-blur-md shadow-sm
-      ${mode === "dark" ? "bg-black text-white" : "bg-white text-black"}`}
-    >
+ <nav
+  className={`w-full fixed top-0 z-50 backdrop-blur-md shadow-sm border-b
+  ${
+    mode === "dark"
+      ? "bg-black text-white border-gray-800"
+      : "bg-white text-black border-gray-300"
+  }`}
+>
+
+    
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
           <img
