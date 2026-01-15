@@ -7,6 +7,8 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import Link from 'next/link'
 
+import { EncryptedText } from '@/components/ui/encrypted-text'
+
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -60,7 +62,7 @@ const mode = useSelector((state) => state.theme.mode);
       }`}>
       <div className="max-w-3xl text-center">
         {/* Loop Typing with Cursor */}
-        <motion.h1
+        {/* <motion.h1
         className={`text-4xl md:text-5xl font-extrabold mb-4 leading-tight
   ${mode === "dark" ? "text-white" : "text-gray-900"}`}
           initial={{ opacity: 0 }}
@@ -88,8 +90,23 @@ const mode = useSelector((state) => state.theme.mode);
               |
             </motion.span>
           </motion.span>
-        </motion.h1>
+        </motion.h1> */}
 
+      <div className="flex items-center justify-center gap-3">
+  <h1
+    className={`text-4xl md:text-5xl font-extrabold leading-tight
+    ${mode === "dark" ? "text-white" : "text-gray-900"}`}
+  >
+    Hey, I’m
+  </h1>
+<EncryptedText
+  text="Bharat Kumar"
+  encryptedClassName="text-neutral-500 text-4xl md:text-5xl font-extrabold leading-tight"
+  revealedClassName={`text-4xl md:text-5xl font-extrabold leading-tight
+    ${mode === "dark" ? "text-orange-500" : "text-orange-600"}`}
+  revealDelayMs={400}
+/>
+</div>
         {/* Subheading */}
         <motion.h2
           className={`text-xl md:text-2xl mb-6 font-medium
